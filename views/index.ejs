@@ -19,26 +19,7 @@ Html
 </head>
 
 <body>
-  <header>
-
-  <div class="main_nav">
-   <span> Pasta Pioneers </span>
-   <button id = "btn" type="submit" value="Submit">
-    <i  class="fas fa-shopping-cart"> Cart </i>
-   </button>
-   <i id="logo" class="fas fa-utensils"></i>
-
-      <!-- for redirecting when click on cart -->
-  <script >
-    let url = "https://www.google.ca/";
-    document.getElementById("btn").onclick = function() {
-      window.location.replace(url);
-    }
-  </script>
-
-  </div>
-
-  </header>
+  <%- include('partials/_header') %>
 
   <div class="side_nav_container">
 
