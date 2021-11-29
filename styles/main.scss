@@ -1,17 +1,104 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+Css
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
 
   background: rgb(163, 208, 219);
   background: linear-gradient(
     227deg,
-    rgba(163, 208, 219, 1) 0%,
+    rgb(219, 163, 163) 0%,
     rgba(163, 176, 219, 1) 20%,
     rgba(163, 173, 219, 1) 34%,
     rgba(163, 219, 208, 1) 59%,
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+
+}
+
+.main_nav{
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  background-color: rgb(212, 153, 42);
+  width:100%;
+  height: 120px;
+
+}
+.main_nav span{
+  margin: 1.5em;
+  font-size: xx-large;
+  color: aqua;
+}
+
+.main_nav button{
+  background-color: rgb(212, 153, 42);
+  margin-right: 2em;
+  font-size: x-large;
+  border: none;
+  outline: none;
+
+}
+.main_nav #logo{
+  display: flex;
+  position: fixed;
+  margin-left: 1.5em;
+  padding: 0;
+  margin-top: 2.5em;
+  margin-left: 4em;
+  font-size: xx-large;
+
+}
+
+// Side nav
+.side_nav_container{
+display:inline-flex;
+justify-content: space-between;
+align-items: stretch;
+padding:2em;
+margin:2.5em;
+margin-top: 10em;
+// border: 9px solid aqua;
+align-items: flex-start;
+// background-color: rgb(255, 255, 255);
+
+}
+.nav_links{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin:0;
+  padding:0;
+  // border: 2px solid red;
+  border-radius: 20%;
+  background-color: rgba(121, 107, 107, 0.4);
+
+}
+
+.nav_links li, a {
+  display: block;
+  color: black;
+  padding: 18px 18px;
+  text-decoration: none;
+
+// border:1px solid pink;
+
+
+}
+.nav_links li a:hover{
+
+  background: rgba(131, 131, 131, 0.4);
+  width: 100%;
+  border-radius: 20%;
+
+
 }
