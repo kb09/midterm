@@ -1,6 +1,6 @@
-INSERT INTO customers (first_name, last_name, email, phone, password)
-VALUES ('Laura', 'Makit', 'laura@example.com', '647-123-4567', 'password');
-INSERT INTO customers (first_name, last_name, email, phone, password)
-VALUES ('Harry', 'Nommanee', 'harry@example.com', '416-123-4567', 'password');
-INSERT INTO customers (first_name, last_name, email, phone, password)
-VALUES ('Mike', 'Gloindian', 'mike@example.com', '416-987-6543', 'password');
+INSERT INTO customers (first_name, last_name, email, phone)
+VALUES ('Laura', 'Makit', 'laura@example.com', '647-123-4567');
+INSERT INTO customers (first_name, last_name, email, phone)
+VALUES ('Harry', 'Nommanee', 'harry@example.com', '416-123-4567');
+INSERT INTO customers (first_name, last_name, email, phone)
+VALUES ('Mike', 'Gloindian', 'mike@example.com', '416-987-6543');
