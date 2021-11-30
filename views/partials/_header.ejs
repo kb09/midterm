@@ -1,20 +1,47 @@
-<header>
 
-  <div class="main_nav">
-   <span> Cucina Deliziosa </span>
-   <button id = "btn" type="submit" value="Submit">
-    <i  class="fas fa-shopping-cart"> Cart </i>
-   </button>
-   <i id="logo" class="fas fa-utensils"></i>
+<!DOCTYPE html>
+<html lang="en">
 
-      <!-- for redirecting when click on cart -->
-  <script >
-    let url = " http://localhost:8080/checkout";
-    document.getElementById("btn").onclick = function() {
-      window.location.replace(url);
-    }
-  </script>
+<head>
+  <title>Cucina Deliziosa</title>
 
-  </div>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <!-- Shopping cart -->
+  <script src="https://kit.fontawesome.com/a4c9bc2fa3.js" crossorigin="anonymous"></script>
+
+  <!-- Header font  -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <header>
+
+    <div class="main_nav">
+
+      <span> Cucina Deliziosa </span>
+      <button id = "btn" type="submit" value="Submit">
+        <i  class="fas fa-shopping-cart"> Cart </i>
+      </button>
+      <img id="logo" src="/../../images/logo.png" height=100; width="100" alt="pasta">
+      <script >
+        let url = "http://localhost:8080/checkout";
+        document.getElementById("btn").onclick = function() {
+          window.location.replace(url);
+        }
+      </script>
+
+      <div class="location"> 4670 Steeles Ave W Unit 14 </div>
+      <div class="number"> <i id="phone" class="fas fa-phone-alt"></i>
+        901-313-4213 </div>
+
+    </div>
 
   </header>
+</body>
+
