@@ -59,10 +59,6 @@ app.use("/", rootRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.post("/logout", (req, res) => {
-  req.session = null;
-  res.redirect("/");
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
