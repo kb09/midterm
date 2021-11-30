@@ -1,13 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
+const cookieSession = require('cookie-session');
+router.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM items;`)
-      .then(data => {
-        const items = data.rows;
-        const templateVars = { items };
+    const itemsPromise = db.query(`SELECT * FROM items;`);
+    const categoriesPromise = db.query(`SELECT * FROM categories;`);
+    Promise.all([itemsPromise, categoriesPromise])
+      .then(response => {
+        const items = response[0].rows;
+        const categories = response[1].rows;
+        const templateVars = { items, categories };
+        // res.json(templateVars);
         res.render("index", templateVars);
+
       })
       .catch(err => {
         res
@@ -17,16 +28,22 @@ module.exports = (db) => {
   });
 
   router.get("/:userId", (req, res) => {
-    // req.session.userId = req.params.userId;
-    // if (!req.session.userId) {
-    //   res.redirect("/");
-    //   return;
-    // }
-    db.query(`SELECT * FROM items;`)
-      .then(data => {
-        const items = data.rows;
-        const templateVars = { items };
+    req.session.userId = req.params.userId;
+    console.log(req.session.userId);
+    if (!req.session.userId) {
+      res.redirect("/");
+      return;
+    }
+    const itemsPromise = db.query(`SELECT * FROM items;`);
+    const categoriesPromise = db.query(`SELECT * FROM categories;`);
+    Promise.all([itemsPromise, categoriesPromise])
+      .then(response => {
+        const items = response[0].rows;
+        const categories = response[1].rows;
+        const templateVars = { items, categories };
+        // res.json(templateVars);
         res.render("index", templateVars);
+
       })
       .catch(err => {
         res
