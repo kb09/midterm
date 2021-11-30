@@ -1,55 +1,153 @@
-Html
 
-<!DOCTYPE html>
-<html lang="en">
+  <%- include('partials/_header') %>
 
-<head>
-  <title>The Pasta Place</title>
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-  <!-- Shopping cart -->
-  <script src="https://kit.fontawesome.com/a4c9bc2fa3.js" crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
-
-<body>
-  <header>
-
-  <div class="main_nav">
-   <span> Pasta Pioneers </span>
-   <button id = "btn" type="submit" value="Submit">
-    <i  class="fas fa-shopping-cart"> Cart </i>
-   </button>
-   <i id="logo" class="fas fa-utensils"></i>
-
-      <!-- for redirecting when click on cart -->
-  <script >
-    let url = "https://www.google.ca/";
-    document.getElementById("btn").onclick = function() {
-      window.location.replace(url);
-    }
-  </script>
-
-  </div>
-
-  </header>
-
-  <div class="side_nav_container">
+  <span class="side_nav_container">
 
     <ul class="nav_links">
-      <li> <a href="#"> Pasta </a> </li>
-      <li> <a href="#"> Appatizers </a> </li>
-      <li> <a href="#"> Drinks </a> </li>
+      <li> <a href="#mains"> Pasta </a> </li>
+      <li> <a href="#appatizers"> Appatizers </a> </li>
+      <li> <a href="#drinks"> Drinks </a> </li>
     </ul>
+  </span>
+
+    <!-- Images  -->
+    <div class="all-imgs-container">
+      <a name="mains"> </a>
+      <h2> Pasta Dishes </h2>
+
+      <div class="pasta-container">
+
+          <div class="pasta">
+             <img src="/../../images/pasta/item-001.jpeg" height=200; width="200" alt="pasta">
+             <div class ="desc"> description </div>
+
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> A random white pasta with some good stuff on it probably got some nice sauce goes well with a drink and an appatizer </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-004.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-005.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-006.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-007.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-008.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-009.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> description </div>
+          </div>
+
+      </div> <!--End of pasta container -->
+
+          <!-- Appatizers -->
+
+      <h2 class="name2">Appatizers</h2>
+      <div class="appz-container">
+        <a name="appatizers"></a>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-1.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="appz">
+           <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
+           <div class ="desc"> description </div>
+          </div>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-3.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-4.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="appz">
+            <img src="../../images/appatizers/images-1.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> description </div>
+          </div>
+
+          <div class="appz">
+            <img src="../../images/appatizers/images.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> description </div>
+          </div>
+
+      </div> <!-- End of appz container -->
 
 
-  </div>
+         <!-- Drinks -->
+
+         <h2 class=name3> Drinks </h2>
+      <div class="drinks-container">
+        <a name="drinks"></a>
+
+        <div class="drinks">
+          <img src=" /../../images/drinks/drink1.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink2.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink3.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink5.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink6.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink7.jpg" height=200; width="200" alt="Drinks">
+          <div class ="desc"> description </div>
+        </div>
+
+        </div>
+
+
+
+
+
+
+    </div> <!-- container for all -->
 
 
 </body>
