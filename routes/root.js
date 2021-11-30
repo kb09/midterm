@@ -8,7 +8,7 @@ router.use(cookieSession({
 }));
 
 module.exports = (db) => {
-  router.get("/logout", (req, res) => {
+  router.post("/logout", (req, res) => {
     req.session = null;
     res.redirect("/");
   });
