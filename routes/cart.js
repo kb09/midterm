@@ -7,6 +7,7 @@ module.exports = (db) => {
       .then(data => {
         const items = data.rows;
         const templateVars = { items };
+        // res.json(templateVars);
         res.render("checkout", templateVars);
       })
       .catch(err => {

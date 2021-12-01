@@ -8,26 +8,12 @@ router.use(cookieSession({
 }));
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    const itemsPromise = db.query(`SELECT * FROM items;`);
-    const categoriesPromise = db.query(`SELECT * FROM categories;`);
-    Promise.all([itemsPromise, categoriesPromise])
-      .then(response => {
-        const items = response[0].rows;
-        const categories = response[1].rows;
-        const templateVars = { items, categories };
-        // res.json(templateVars);
-        res.render("index", templateVars);
-
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+  router.post("/logout", (req, res) => {
+    req.session = null;
+    res.redirect("/");
   });
 
-  router.get("/:userId", (req, res) => {
+  router.get("/login/:userId", (req, res) => {
     req.session.userId = req.params.userId;
     console.log(req.session.userId);
     if (!req.session.userId) {
@@ -53,10 +39,29 @@ module.exports = (db) => {
   });
 
 
+
   router.post("/:userId/cart", (req, res) => {
     // Need passing data
   });
 
+  router.get("/", (req, res) => {
+    const itemsPromise = db.query(`SELECT * FROM items;`);
+    const categoriesPromise = db.query(`SELECT * FROM categories;`);
+    Promise.all([itemsPromise, categoriesPromise])
+      .then(response => {
+        const items = response[0].rows;
+        const categories = response[1].rows;
+        const templateVars = { items, categories };
+        // res.json(templateVars);
+        res.render("index", templateVars);
+
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   return router;
 };
