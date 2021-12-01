@@ -52,7 +52,27 @@ module.exports = (db) => {
       });
   });
 
-
+  router.get("/:userId/cart", (req, res) => {
+    const itemsPromise = db.query(`SELECT * FROM items;`);
+    const customerId = req.params.userId;
+    const customerQueryString = `
+    SELECT first_name, last_name, email, phone FROM customers WHERE id = $1;
+    `;
+    const customerPromise = db.query(customerQueryString, [customerId]);
+    Promise.all([itemsPromise, customerPromise])
+      .then(response => {
+        const items = response[0].rows;
+        const customer = response[1].rows;
+        const templateVars = { items, customer };
+        // res.json(templateVars);
+        res.render("checkout", templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   router.post("/:userId/cart", (req, res) => {
     // Need passing data
