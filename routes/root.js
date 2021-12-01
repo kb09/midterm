@@ -14,19 +14,33 @@ module.exports = (db) => {
   });
 
   router.get("/login/:userId", (req, res) => {
-    req.session.userId = req.params.userId;
-    console.log(req.session.userId);
-    if (!req.session.userId) {
-      res.redirect("/");
-      return;
-    }
     const itemsPromise = db.query(`SELECT * FROM items;`);
     const categoriesPromise = db.query(`SELECT * FROM categories;`);
-    Promise.all([itemsPromise, categoriesPromise])
+    const customerId = req.params.userId; //OR req.session.userId
+    const customerQueryString = `
+    SELECT first_name, last_name FROM customers WHERE id = $1;
+    `;
+    const customerPromise = db.query(customerQueryString, [customerId]);
+    Promise.all([itemsPromise, categoriesPromise, customerPromise])
       .then(response => {
         const items = response[0].rows;
         const categories = response[1].rows;
-        const templateVars = { items, categories };
+        const customer = response[2].rows;
+        const templateVars = { items, categories, customer };
+
+        //If customer is not resistered, redirect to '/'
+        if (!customer.length) {
+          res.redirect("/");
+          return;
+        }
+        //If customer is resistered, set session
+        req.session.userId = req.params.userId;
+        console.log(req.session.userId);
+        if (!req.session.userId) {
+          res.redirect("/");
+          return;
+        }
+        //  objects: items, categories, customer
         // res.json(templateVars);
         res.render("index", templateVars);
 
@@ -42,7 +56,6 @@ module.exports = (db) => {
 
   router.post("/:userId/cart", (req, res) => {
     // Need passing data
-    res.redirect("/checkout");
   });
 
   router.get("/", (req, res) => {
