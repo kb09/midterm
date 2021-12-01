@@ -16,7 +16,7 @@ module.exports = (db) => {
   router.get("/login/:userId", (req, res) => {
     const itemsPromise = db.query(`SELECT * FROM items;`);
     const categoriesPromise = db.query(`SELECT * FROM categories;`);
-    const customerId = req.params.userId; //OR req.session.userId
+    const customerId = req.params.userId;
     const customerQueryString = `
     SELECT first_name, last_name FROM customers WHERE id = $1;
     `;
