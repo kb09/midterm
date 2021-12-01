@@ -42,6 +42,7 @@ module.exports = (db) => {
 
   router.post("/:userId/cart", (req, res) => {
     // Need passing data
+    res.redirect("/checkout");
   });
 
   router.get("/", (req, res) => {
