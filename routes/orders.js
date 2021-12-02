@@ -14,7 +14,7 @@ module.exports = (db) => {
       WHERE order_id = $1;
       `;
     const totalQueryString = `
-      SELECT orders.id, SUM(order_items.quantity) AS total_item, SUM(items.price * order_items.quantity) AS subtotal
+      SELECT orders.id, SUM(order_items.quantity) AS total_item
       FROM orders
       JOIN order_items ON order_items.order_id = orders.id
       JOIN items ON items.id = order_items.item_id
