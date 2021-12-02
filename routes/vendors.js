@@ -4,8 +4,8 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const accountSid = "AC765592b82f953fe412dcea635aa3f103" // process.env.TWILIO_ACCOUNT_SID;
-const authToken = "d18d5539119b5fe74f6215d4bf86fde1" // process.env.TWILIO_AUTH_TOKEN;
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 // const formatDate = (date) => {
@@ -99,16 +99,16 @@ module.exports = (db) => {
           const firstName = orderDetails[0].first_name;
           const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
           console.log(msg);
-          // res.json({ order, orderDetails });
-          // if (order) {
-          //   client.messages
-          //     .create({
-          //       body: msg,
-          //       from: '+12267741450',
-          //       to: '+16478091121'
-          //     })
-          //     .then(message => console.log(message.sid));
-          // }
+          res.json({ order, orderDetails });
+          if (order) {
+            client.messages
+              .create({
+                body: msg,
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
+              })
+              .then(message => console.log(message.sid));
+          }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
@@ -145,19 +145,19 @@ module.exports = (db) => {
           // res.json({ order, orderDetails});
           const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up!  ${completedTime}`;
           console.log(msg);
-          // if (order) {
-          //   console.log("Send MSG");
-          //   client.messages
-          //     .create({
-          //       body: msg,
-          //       from: '+12267741450',
-          //       to: '+16478091121'
-          //     })
-          //     .then(message => console.log(message.sid))
-          //     .catch(error => {
-          //       console.log(error);
-          //     })
-          // }
+          if (order) {
+            console.log("Send MSG");
+            client.messages
+              .create({
+                body: msg,
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
+              })
+              .then(message => console.log(message.sid))
+              .catch(error => {
+                console.log(error);
+              })
+          }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
