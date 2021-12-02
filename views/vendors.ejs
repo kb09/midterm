@@ -38,13 +38,14 @@
         </div>
       </form>
     <% } else { %>
-    <p class="text-muted">Estimated Time: <%= status[0].estimated_time %></p>
+    <p class="text-muted" class="text-muted">Estimated Time: <%= status[0].estimated_time %></p>
     <% } %>
     <% if (status[0].estimated_time && !status[0].completed_time) { %>
       <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
         <div class="form-group mb-2">
-          <label for="completedTime">Order is Ready:</label>
-          <button type="submit" class="btn btn-primary">Edit</button>
+          <label class="text-muted" for="completedTime">Completed time:</label>
+          <input type="hidden" name ="completedTime" value = "Now()">
+          <button type="submit" class="btn btn-primary">Order is Ready!</button>
         </div>
       </form>
       <% } else { %>

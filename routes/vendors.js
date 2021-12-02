@@ -57,29 +57,51 @@ module.exports = (db) => {
   });
   router.post("/:id/:orders/:order_id", (req, res) => {
     // res.json(`I'm a id ${req.params.id}, orders: ${req.params.orders}, order_id${req.params.order_id}`);
-
-
-    const estimatedTime = parseInt(req.body.estimatedTime);
     const orderId = parseInt(req.params.order_id);
-    const queryParams = [];
-    queryParams.push(estimatedTime);
-    queryParams.push(orderId);
-    console.log(queryParams);
-    const updateQueryString = `
+
+    if (req.body.estimatedTime) {
+      const estimatedTime = parseInt(req.body.estimatedTime);
+      const queryParams = [];
+      queryParams.push(estimatedTime);
+      queryParams.push(orderId);
+      console.log(queryParams);
+      const updateQueryString = `
     UPDATE orders SET estimated_time = NOW() + $1 * interval '1 minutes', status = 'In progress'
     WHERE id = $2 RETURNING *;
     `;
-    db.query(updateQueryString, queryParams)
-      .then(data => {
-        const order = data.rows[0];
-        res.json({ order });
-      })
-      .catch(err => {
-        console.log(err);
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+      db.query(updateQueryString, queryParams)
+        .then(data => {
+          // const order = data.rows[0];
+          // res.json({ order });
+          res.redirect(`/vendors/1/order/${orderId}`);
+        })
+        .catch(err => {
+          console.log(err);
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    }
+
+    if (req.body.completedTime) {
+      const queryParams = [];
+      queryParams.push(orderId);
+      const updateQueryString = `
+    UPDATE orders SET completed_time = NOW()
+    WHERE id = $1 RETURNING *;
+    `;
+      db.query(updateQueryString, queryParams)
+        .then(data => {
+          // const order = data.rows[0];
+          res.redirect(`/vendors/1/order/${orderId}`);
+        })
+        .catch(err => {
+          console.log(err);
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    }
 
     // const msg = “hello (name) your order #12343 is confirmed, please pick it up at 1:30
     const accountSid = 'AC21417ecef39f48e33fbf3deb537ab629';
