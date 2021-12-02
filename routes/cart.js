@@ -38,10 +38,6 @@ module.exports = (db) => {
 
 
 
-
-
-
-
 // adding item to cart
 
 // module.exports = function Cart(oldCart){
