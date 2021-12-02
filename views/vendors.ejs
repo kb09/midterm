@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Restaunrant</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="py-5 text-center">
+    <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+    <h2>Order:  <%= status[0].order_id %></h2>
+
+    <p class="text-muted">Customer <%= status[0].first_name %> <%= status[0].last_name %></span></p>
+    <p class="text-muted">Status: <%= status[0].status %></p>
+    <p class="text-muted">Place Order Time: <%= status[0].place_order_time %></p>
+    <% if (!status[0].estimated_time) { %>
+      <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
+        <div class="form-group mb-2">
+          <label for="estimatedTime">Enter Estimated Time:</label>
+          <input class="form-control" type="text" name="estimatedTime" placeholder="10" style="width: 300px; margin: 1em">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    <% } else { %>
+    <p class="text-muted">Estimated Time: <%= status[0].estimated_time %></p>
+    <% } %>
+    <% if (status[0].estimated_time && !status[0].completed_time) { %>
+      <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
+        <div class="form-group mb-2">
+          <label for="completedTime">Order is Ready:</label>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+      </form>
+      <% } else { %>
+    <p class="text-muted">Completed Time: <%= status[0].completed_time %></p>
+    <% } %>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Order</span>
+
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0"></h6>
+            <small class="text-muted">
+              <table>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th></th>
+                </tr>
+                <% for(let order in orders) { %>
+                <tr>
+                  <td><%= orders[order].name %></td>
+                  <td><%= Math.round(orders[order].price / 100).toFixed(2) %></td>
+                  <td><%= orders[order].quantity %></td>
+                  <td>Need calculate</td>
+
+                </tr>
+                <% } %>
+              </table>
+            </small>
+          </div>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (CAD) Need calculate here !<%= total[0].total_item %> </span>
+        </li>
+      </ul>
+    </div>
+    <div id='form' class="col-md-8 order-md-1">
+
+      <!-- <h4 class="mb-3">Billing address</h4>
+      <form class="needs-validation" novalidate method="POST" action="/1/cart">
+        <input type='hidden' name='orderItem' value=/>
+        <input type='hidden' name='foodArray' value=/>
+        <input type='hidden' name='quantity' value=/>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" name='firstName' required>
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" name='lastName' required>
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="username">Phone Number</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">#</span>
+            </div>
+            <input name='phoneNumber' type="text" class="form-control" id="phonenumber" placeholder="123-456-789"
+              required>
+            <div class="invalid-feedback" style="width: 100%;">
+              Your phone number is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="409 Toronto St" required>
+          <div class="invalid-feedback">
+            Please enter your address.
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <h4 class="mb-3">Payment</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+            <label class="custom-control-label" for="credit">Credit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="debit">Debit card</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Name on card</label>
+            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+            <small class="text-muted">Full name as displayed on card</small>
+            <div class="invalid-feedback">
+              Name on card is required
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Credit card number</label>
+            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <div class="invalid-feedback">
+              Credit card number is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Expiration</label>
+            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+            <div class="invalid-feedback">
+              Expiration date required
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">CVV</label>
+            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+            <div class="invalid-feedback">
+              Security code required
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Confirm Order</button>
+      </form> -->
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">Copyright © 2021 - </p>
+  </footer>
+</div>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"
+    integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+</body>
+
+</html>
