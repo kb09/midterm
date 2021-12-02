@@ -1,14 +1,21 @@
-
+<!-- let Product= require(../cart) this is getting cart.js -->
   <%- include('partials/_header') %>
-
   <span class="side_nav_container">
 
     <ul class="nav_links">
       <li> <a href="#mains"> Pasta </a> </li>
       <li> <a href="#appatizers"> Appatizers </a> </li>
       <li> <a href="#drinks"> Drinks </a> </li>
+      <li> <a href="#dess"> Desserts </a> </li>
     </ul>
   </span>
+
+  <script src="cart.js" async> </script>
+
+
+  <!-- For main website page, each menu item should have its own card
+    with details(name, description, price, image, and add/remove button) -->
+
 
     <!-- Images  -->
     <div class="all-imgs-container">
@@ -18,49 +25,101 @@
       <div class="pasta-container">
 
           <div class="pasta">
-             <img src="/../../images/pasta/item-001.jpeg" height=200; width="200" alt="pasta">
-             <div class ="desc"> description </div>
+            <img src="/../../images/pasta/item-001.jpeg" height=200; width="200" alt="pasta">
 
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <!-- <input type="number" value="0" size="10"> -->
+              <button class="delete"><i class="fas fa-minus"></i></button>
+
+
+              <!-- adding script tag for testing, wasn't working by linking -->
+              <script>
+                let btnADD = document.querySelector(".add")
+                let btnDelete = document.querySelector(".delete")
+                let input = document.querySelector("input")
+                btnADD.addEventListener('click',()=> {
+                  input.value = parseInt(input.value) + 1;
+                })
+                btnDelete.addEventListener('click',()=> {
+                  input.value = parseInt(input.value) - 1;
+                })
+              </script>
+            </div>
+
+
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[7].name %></p>
+                  <p> <%= items[7].descrition %></p>
+                  <p>$ <%= items[7].price %></p>
+                  <% } %>
+
+            </div>
           </div>
 
           <div class="pasta">
-            <img src="../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
+            <img src="/../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[8].name %></p>
+                <p><%= items[8].descrition %></p>
+                <p>$ <%= items[8].price %></p>
+                <% } %>
+            </div>
+         </div>
+
+          <div class="pasta">
+
+            <img src="/../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[9].name %></p>
+                <p><%= items[9].descrition %></p>
+                <p>$ <%= items[9].price %></p>
+                <% } %>
+            </div>
           </div>
 
           <div class="pasta">
-            <img src="../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> A random white pasta with some good stuff on it probably got some nice sauce goes well with a drink and an appatizer </div>
-          </div>
 
-          <div class="pasta">
             <img src="../../images/pasta/item-004.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[10].name %></p>
+              <p><%= items[10].descrition %></p>
+              <p>$<%= items[10].price %></p>
+              <% } %>
+            </div>
+
           </div>
 
           <div class="pasta">
             <img src="../../images/pasta/item-005.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[11].name %></p>
+              <p> <%= items[11].descrition %></p>
+              <p>$ <%= items[11].price %></p>
+              <% } %>
+            </div>
           </div>
 
           <div class="pasta">
             <img src="../../images/pasta/item-006.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[12].name %></p>
+              <p><%= items[12].descrition %></p>
+              <p>$ <%= items[12].price %></p>
+              <% } %>
+            </div>
           </div>
 
           <div class="pasta">
             <img src="../../images/pasta/item-007.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-008.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-009.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[13].name %></p>
+              <br>
+              <p><%= items[13].descrition %></p>
+              <br>
+              <p>$ <%= items[13].price %></p>
+             <% } %>
+            </div>
           </div>
 
       </div> <!--End of pasta container -->
@@ -73,84 +132,137 @@
 
           <div class="appz">
             <img src="/../../images/appatizers/download-1.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[0].name %></p>
+                  <br>
+                  <p><%= items[0].descrition %></p>
+                  <br>
+                  <p>$ <%= items[0].price %></p>
+                  <% } %>
+            </div>
           </div>
 
           <div class="appz">
-           <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
-           <div class ="desc"> description </div>
+            <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[1].name %></p>
+                <br>
+                <p><%= items[1].descrition %></p>
+                <br>
+                <p>$ <%= items[1].price %></p>
+                <% } %>
+            </div>
           </div>
 
           <div class="appz">
             <img src="/../../images/appatizers/download-3.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="/../../images/appatizers/download-4.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="../../images/appatizers/images-1.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="../../images/appatizers/images.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[2].name %></p>
+                <br>
+                <p><%= items[2].descrition %></p>
+                <br>
+                <p>$ <%= items[2].price %></p>
+                <% } %>
+            </div>
           </div>
 
       </div> <!-- End of appz container -->
 
-
          <!-- Drinks -->
+         <br>
+         <br>
 
-         <h2 class=name3> Drinks </h2>
+          <h2 class=name3> Drinks </h2>
       <div class="drinks-container">
         <a name="drinks"></a>
 
         <div class="drinks">
           <img src=" /../../images/drinks/drink1.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
+          <div class ="desc"> <%  { %>
+              <p class="name"><%= items[17].name %></p>
+              <br>
+              <p><%= items[17].descrition %></p>
+              <br>
+              <p>$ <%= items[17].price %></p>
+              <% } %>
+          </div>
         </div>
 
         <div class="drinks">
           <img src="/../../images/drinks/drink2.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
+          <div class ="desc"> <%  { %>
+            <p class="name"><%= items[18].name %></p>
+            <br>
+            <p><%= items[18].descrition %></p>
+            <br>
+            <p>$ <%= items[18].price %></p>
+            <% } %>
+          </div>
         </div>
 
         <div class="drinks">
           <img src="/../../images/drinks/drink3.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
+          <div class ="desc"> <%  { %>
+            <p class="name"><%= items[19].name %></p>
+            <br>
+            <p><%= items[19].descrition %></p>
+            <br>
+            <p>$ <%= items[19].price %></p>
+            <% } %>
+          </div>
         </div>
+        <!-- works -->
 
-        <div class="drinks">
-          <img src="/../../images/drinks/drink5.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
+        <!-- <% for(let item in items) { %>
+          <p>name: <%= items[item].name %></p>
+          <p>description: <%= items[item].descrition %></p>
+          <p>price: <%= items[item].price %></p>
+        <% } %> -->
+      </div> <!-- drinks container end -->
 
-        <div class="drinks">
-          <img src="/../../images/drinks/drink6.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
+      <!-- Desserts -->
 
-        <div class="drinks">
-          <img src="/../../images/drinks/drink7.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
+      <h2 class="name4">Dessert</h2>
+      <div class="dessert-container">
+        <a name="dess"></a>
 
-        </div>
+          <div class="dess">
+            <img src="/../../images/dessert/pic1.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[14].name %></p>
+                  <br>
+                  <p><%= items[14].descrition %></p>
+                  <br>
+                  <p>$ <%= items[14].price %></p>
+                  <% } %>
+            </div>
+          </div>
 
+          <div class="dess">
+            <img src="/../../images/dessert/pic2.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[15].name %></p>
+                <br>
+                <p><%= items[15].descrition %></p>
+                <br>
+                <p>$ <%= items[15].price %></p>
+                <% } %>
+            </div>
+          </div>
 
-
-
-
-
-
+          <div class="dess">
+            <img src="/../../images/dessert/pic3.jpg" height=200; width="200" alt="appatizers">
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[16].name %></p>
+                <br>
+                <p><%= items[16].descrition %></p>
+                <br>
+                <p>$ <%= items[16].price %></p>
+                <% } %>
+            </div>
+          </div>
+        </div> <!--End of dessert container -->
     </div> <!-- container for all -->
-
-
 </body>
 </html>
 
