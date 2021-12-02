@@ -38,7 +38,7 @@ body{
 
 .main_nav button{
   background-color: rgb(212, 153, 42);
-  margin-left: 8em;
+  margin-left: 0;
   font-size: x-large;
   //border: none;
   outline: none;
@@ -76,7 +76,12 @@ body{
   font-size: larger;
 
 }
-
+.user-name{
+display: inline-block;
+margin-left: 6em;
+margin-top: 6em;
+white-space: nowrap;
+}
 #phone{
   padding-right: 10px;
 
@@ -386,14 +391,32 @@ outline: none;
 }
 
 .qnty{
-  width: 2.5em;
+  width: 4em;
   font-weight: lighter;
   margin-right: 8em;
   text-align: center;
   outline: none;
   border: none;
-  border: 1px solid green;
   background-color: transparent;
 
 
 }
+
+// Add to cart button
+
+.add-cart{
+  position: absolute;
+  background-color: darkgray;
+  transition: all 0.3x ease-in-out;
+  opacity:0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add-cart:hover{
+  bottom: 50px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: none;
+}
+
