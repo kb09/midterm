@@ -15,11 +15,6 @@
 
   <script src="cart.js" async> </script>
 
-
-  <!-- For main website page, each menu item should have its own card
-    with details(name, description, price, image, and add/remove button) -->
-
-
     <!-- Images  -->
     <div class="all-imgs-container">
       <a name="mains"> </a>
@@ -34,16 +29,11 @@
               <button class="add"><i class="fas fa-plus"></i></button>
               <button class="delete"><i class="fas fa-minus"></i></button>
             </div>
-                          <!-- adding script tag for testing, wasn't working by linking -->
-
-
-
-
 
             <div class ="desc"> <%  { %>
                   <p class="name"><%= items[7].name %></p>
-                  <p> <%= items[7].descrition %></p>
-                  <p>$ <%= items[7].price/100 %></p>
+                  <p class='description'> <%= items[7].descrition %></p>
+                  <p class='price'>$ <%= items[7].price/100 %></p>
                   <% } %>
 
             </div>
@@ -51,6 +41,7 @@
 
           <div class="pasta">
             <img src="/../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
+
             <div class="cart-buttons">
               <button class="add"><i class="fas fa-plus"></i></button>
               <button class="delete"><i class="fas fa-minus"></i></button>
@@ -58,8 +49,8 @@
 
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[8].name %></p>
-                <p><%= items[8].descrition %></p>
-                <p>$ <%= items[8].price/100 %></p>
+                <p class='description'><%= items[8].descrition %></p>
+                <p class='price'>$ <%= items[8].price/100 %></p>
                 <% } %>
             </div>
          </div>
@@ -67,6 +58,7 @@
           <div class="pasta">
 
             <img src="/../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
+
             <div class="cart-buttons">
               <button class="add"><i class="fas fa-plus"></i></button>
               <button class="delete"><i class="fas fa-minus"></i></button>
@@ -74,8 +66,8 @@
 
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[9].name %></p>
-                <p><%= items[9].descrition %></p>
-                <p>$ <%= items[9].price/100 %></p>
+                <p class='description'><%= items[9].descrition %></p>
+                <p class='price'>$ <%= items[9].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -83,10 +75,15 @@
           <div class="pasta">
 
             <img src="../../images/pasta/item-004.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[10].name %></p>
-              <p><%= items[10].descrition %></p>
-              <p>$<%= items[10].price/100 %></p>
+              <p class='description'><%= items[10].descrition %></p>
+              <p class='price'>$ <%= items[10].price/100 %></p>
               <% } %>
             </div>
 
@@ -94,32 +91,48 @@
 
           <div class="pasta">
             <img src="../../images/pasta/item-005.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[11].name %></p>
-              <p> <%= items[11].descrition %></p>
-              <p>$ <%= items[11].price/100 %></p>
+              <p class='description'> <%= items[11].descrition %></p>
+              <p class='price'>$ <%= items[11].price/100 %></p>
               <% } %>
             </div>
           </div>
 
           <div class="pasta">
             <img src="../../images/pasta/item-006.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[12].name %></p>
-              <p><%= items[12].descrition %></p>
-              <p>$ <%= items[12].price/100 %></p>
+              <p class='description'><%= items[12].descrition %></p>
+              <p class='price'>$ <%= items[12].price/100 %></p>
               <% } %>
             </div>
           </div>
 
           <div class="pasta">
             <img src="../../images/pasta/item-007.jpeg" height=200; width="200" alt="pasta">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[13].name %></p>
               <br>
-              <p><%= items[13].descrition %></p>
+              <p class='description'><%= items[13].descrition %></p>
               <br>
-              <p>$ <%= items[13].price/100 %></p>
+              <p class='price'>$ <%= items[13].price/100 %></p>
              <% } %>
             </div>
           </div>
@@ -134,36 +147,54 @@
 
           <div class="appz">
             <img src="/../../images/appatizers/download-1.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                   <p class="name"><%= items[0].name %></p>
                   <br>
-                  <p><%= items[0].descrition %></p>
+                  <p class='description'><%= items[0].descrition %></p>
                   <br>
-                  <p>$ <%= items[0].price/100 %></p>
+                  <p class='price'>$ <%= items[0].price/100 %></p>
                   <% } %>
             </div>
           </div>
 
           <div class="appz">
             <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[1].name %></p>
                 <br>
-                <p><%= items[1].descrition %></p>
+                <p class='description'><%= items[1].descrition %></p>
                 <br>
-                <p>$ <%= items[1].price/100 %></p>
+                <p class='price'>$ <%= items[1].price/100 %></p>
                 <% } %>
             </div>
           </div>
 
           <div class="appz">
             <img src="/../../images/appatizers/download-3.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[2].name %></p>
                 <br>
-                <p><%= items[2].descrition %></p>
+                <p class='description'><%= items[2].descrition %></p>
                 <br>
-                <p>$ <%= items[2].price/100 %></p>
+                <p class='price'>$ <%= items[2].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -180,36 +211,54 @@
 
         <div class="drinks">
           <img src=" /../../images/drinks/drink1.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
           <div class ="desc"> <%  { %>
               <p class="name"><%= items[17].name %></p>
               <br>
-              <p><%= items[17].descrition %></p>
+              <p class='description'><%= items[17].descrition %></p>
               <br>
-              <p>$ <%= items[17].price/100 %></p>
+              <p class='price'>$ <%= items[17].price/100 %></p>
               <% } %>
           </div>
         </div>
 
         <div class="drinks">
           <img src="/../../images/drinks/drink2.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
           <div class ="desc"> <%  { %>
             <p class="name"><%= items[18].name %></p>
             <br>
-            <p><%= items[18].descrition %></p>
+            <p class='description'><%= items[18].descrition %></p>
             <br>
-            <p>$ <%= items[18].price/100 %></p>
+            <p class='price'>$ <%= items[18].price/100 %></p>
             <% } %>
           </div>
         </div>
 
         <div class="drinks">
           <img src="/../../images/drinks/drink3.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
           <div class ="desc"> <%  { %>
             <p class="name"><%= items[19].name %></p>
             <br>
-            <p><%= items[19].descrition %></p>
+            <p class='description'><%= items[19].descrition %></p>
             <br>
-            <p>$ <%= items[19].price/100 %></p>
+            <p class='price'>$ <%= items[19].price/100 %></p>
             <% } %>
           </div>
         </div>
@@ -230,43 +279,64 @@
 
           <div class="dess">
             <img src="/../../images/dessert/pic1.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                   <p class="name"><%= items[14].name %></p>
                   <br>
-                  <p><%= items[14].descrition %></p>
+                  <p class='description'><%= items[14].descrition %></p>
                   <br>
-                  <p>$ <%= items[14].price/100 %></p>
+                  <p class='price'>$ <%= items[14].price/100 %></p>
                   <% } %>
             </div>
           </div>
 
           <div class="dess">
             <img src="/../../images/dessert/pic2.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <!-- ADD CLASSES TO REST TOO  -->
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[15].name %></p>
                 <br>
-                <p><%= items[15].descrition %></p>
+                <p class='description'><%= items[15].descrition %></p>
                 <br>
-                <p>$ <%= items[15].price/100 %></p>
+                <p class='price'> $ <%= items[15].price/100 %></p>
                 <% } %>
             </div>
           </div>
 
           <div class="dess">
             <img src="/../../images/dessert/pic3.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[16].name %></p>
                 <br>
-                <p><%= items[16].descrition %></p>
+                <p class='description'><%= items[16].descrition %></p>
                 <br>
-                <p>$ <%= items[16].price/100 %></p>
+                <p class='price'>$ <%= items[16].price/100 %></p>
                 <% } %>
             </div>
           </div>
         </div> <!--End of dessert container -->
     </div> <!-- container for all -->
 
-    <script>
+    <!-- document.querySelectorAll not wokring "all" -->
+
+    <!-- <script>
       let btnADD = document.querySelector(".add")
       let btnDelete = document.querySelector(".delete")
       let input = document.querySelector("input")
@@ -276,21 +346,24 @@
       btnDelete.addEventListener('click',()=> {
         input.value = parseInt(input.value) - 1;
       })
+
+      let btnADD = document.querySelector(".add")
+      let btnDelete = document.querySelector(".delete")
+      let input = document.querySelector("input")
+      btnADD.addEventListener('click',()=> {
+        input.value = parseInt(input.value) + 1;
+      })
+      btnDelete.addEventListener('click',()=> {
+        input.value = parseInt(input.value) - 1;
+      })
+
+      // let cartt = document.querySelectorAll('.cart');
+
+      // for(var i=0; i<btnADD.length; i++){
+      //     cartt[i].style.color = "red";
+      // }
+
     </script>
+    <script src="main.js"></script> -->
 </body>
 </html>
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"
-    integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script> -->
