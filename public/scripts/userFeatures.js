@@ -1,8 +1,8 @@
 // cart feature
-
 if(document.readyState == 'loading') {
   document.addEventListener('DOMContentLoaded', start)
-} else { start() }
+} else { start()
+}
 
 function start() {
 
