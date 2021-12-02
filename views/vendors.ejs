@@ -26,14 +26,14 @@
     <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
     <h2>Order:  <%= status[0].order_id %></h2>
 
-    <p class="text-muted">Customer <%= status[0].first_name %> <%= status[0].last_name %></span></p>
+    <p class="text-muted">Customer: <%= status[0].first_name %> <%= status[0].last_name %></span></p>
     <p class="text-muted">Status: <%= status[0].status %></p>
     <p class="text-muted">Place Order Time: <%= status[0].place_order_time %></p>
     <% if (!status[0].estimated_time) { %>
       <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
         <div class="form-group mb-2">
-          <label for="estimatedTime">Enter Estimated Time:</label>
-          <input class="form-control" type="text" name="estimatedTime" placeholder="10" style="width: 300px; margin: 1em">
+          <label class="text-muted" for="estimatedTime">Enter Estimated Time:</label>
+          <input class="form-control" type="number" name="estimatedTime" placeholder="How long will it take?" style="width: 300px; margin: 1em">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>

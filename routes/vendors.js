@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const bodyParser = require("body-parser");
+router.use(bodyParser.urlencoded({ extended: true }));
+
 module.exports = (db) => {
 
 
@@ -54,17 +57,45 @@ module.exports = (db) => {
   });
   router.post("/:id/:orders/:order_id", (req, res) => {
     // res.json(`I'm a id ${req.params.id}, orders: ${req.params.orders}, order_id${req.params.order_id}`);
+
+
+    const estimatedTime = parseInt(req.body.estimatedTime);
+    const orderId = parseInt(req.params.order_id);
+    const queryParams = [];
+    queryParams.push(estimatedTime);
+    queryParams.push(orderId);
+    console.log(queryParams);
+    const updateQueryString = `
+    UPDATE orders SET estimated_time = NOW() + $1 * interval '1 minutes', status = 'In progress'
+    WHERE id = $2 RETURNING *;
+    `;
+    db.query(updateQueryString, queryParams)
+      .then(data => {
+        const order = data.rows[0];
+        res.json({ order });
+      })
+      .catch(err => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
+    // const msg = “hello (name) your order #12343 is confirmed, please pick it up at 1:30
     const accountSid = 'AC21417ecef39f48e33fbf3deb537ab629';
     const authToken = '37f530bb6d8119d61f8794e789216c26';
     const client = require('twilio')(accountSid, authToken);
 
-    client.messages
-      .create({
-        body: 'Your order is accepted. Estimated time: 18:00 EST',
-        from: '+12264000625',
-        to: '+16474256464'
-      })
-      .then(message => console.log(message.sid));
+    // if (estimatedTime) {
+    //   client.messages
+    //     .create({
+    //       body: 'Your order is accepted. Estimated time: 18:00 EST',
+    //       from: '+12264000625',
+    //       to: '+16474256464'
+    //     })
+    //     .then(message => console.log(message.sid));
+    // }
+
   });
 
   return router;
