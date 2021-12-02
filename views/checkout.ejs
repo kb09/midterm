@@ -17,6 +17,8 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/cart.js"></script>
+
 </head>
 
 <body>
@@ -27,8 +29,6 @@
     <h2>Checkout</h2>
     <p class="lead">Thank you for choosing Cucina Deliziosa ....... Your order is almost complete.</p>
   </div>
-
-
 
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
@@ -145,6 +145,31 @@
       </form>
     </div>
   </div>
+
+
+  <!-- Adding Cart section on checkout -->
+
+  <section class="cart-container">
+    <h1 class="cart-header">Cart</h1>
+
+    <div class="product-info">
+
+      <span class='cart-product'> Items</span>
+      <span class='cart-price'> Price </span>
+      <span class='cart-quantity'> Quantity </span>
+    </div>
+
+    <div class="cart-items"></div>
+
+    <div class="cart-total">
+      <strong class="cart-title">Total</strong>
+      <span class="cart-items-price">$0</span>
+    </div>
+    <button class="btn btn-primary" type="button" method="POST" action="Time" >Place Order</button>
+  </section>
+
+
+
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">Copyright © 2021 - </p>
