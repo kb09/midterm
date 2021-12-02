@@ -8,14 +8,9 @@ const accountSid = 'AC21417ecef39f48e33fbf3deb537ab629';
 const authToken = '37f530bb6d8119d61f8794e789216c26';
 const client = require('twilio')(accountSid, authToken);
 
-
-
 module.exports = (db) => {
 
-
   router.get("/:id/:orders/:order_id", (req, res) => {
-    // res.json(`I'm a id ${req.params.id}, orders: ${req.params.orders}, order_id${req.params.order_id}`);
-
     const orderId = req.params.order_id;
     const orderQueryString = `
       SELECT order_id, items.name, items.price, quantity
@@ -47,11 +42,9 @@ module.exports = (db) => {
         const orders = response[0].rows;
         const total = response[1].rows;
         const status = response[2].rows;
-
         const templateVars = { orders, total, status };
         // res.json(templateVars);
         res.render("vendors", templateVars); //ejs file need to be changed
-
       })
       .catch(err => {
         res
@@ -62,7 +55,6 @@ module.exports = (db) => {
 
   });
   router.post("/:id/:orders/:order_id", (req, res) => {
-    // res.json(`I'm a id ${req.params.id}, orders: ${req.params.orders}, order_id${req.params.order_id}`);
     const orderId = parseInt(req.params.order_id);
 
     if (req.body.estimatedTime) {
@@ -93,17 +85,17 @@ module.exports = (db) => {
           const firstName = orderDetails[0].first_name;
           console.log(order.estimated_time);
           const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
-          res.json({ order, orderDetails });
-          // if (order) {
-          //   client.messages
-          //     .create({
-          //       body: msg,
-          //       from: '+12264000625',
-          //       to: '+16474256464'
-          //     })
-          //     .then(message => console.log(message.sid));
-          // }
-          // res.redirect(`/vendors/1/order/${orderId}`);
+          // res.json({ order, orderDetails });
+          if (order) {
+            client.messages
+              .create({
+                body: msg,
+                from: '+12264000625',
+                to: '+16474256464'
+              })
+              .then(message => console.log(message.sid));
+          }
+          res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
           console.log(err);
@@ -154,19 +146,6 @@ module.exports = (db) => {
             .json({ error: err.message });
         });
     }
-
-    // const msg = “hello (name) your order #12343 is confirmed, please pick it up at 1:30
-
-
-    // if (estimatedTime) {
-    //   client.messages
-    //     .create({
-    //       body: 'Your order is accepted. Estimated time: 18:00 EST',
-    //       from: '+12264000625',
-    //       to: '+16474256464'
-    //     })
-    //     .then(message => console.log(message.sid));
-    // }
 
   });
 
