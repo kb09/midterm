@@ -98,8 +98,8 @@ module.exports = (db) => {
           const estimatedTime = order[0].estimated_time;
           const firstName = orderDetails[0].first_name;
           const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
-          console.log(msg);
-          res.json({ order, orderDetails });
+          // console.log(msg);
+          // res.json({ order, orderDetails });
           if (order) {
             client.messages
               .create({
