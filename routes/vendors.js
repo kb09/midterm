@@ -93,12 +93,11 @@ module.exports = (db) => {
           const firstName = orderDetails[0].first_name;
           console.log(order.estimated_time);
           const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
-          console.log(msg);
-          res.json({ order });
+          res.json({ order, orderDetails });
           // if (order) {
           //   client.messages
           //     .create({
-          //       body: 'Your order is accepted. Estimated time: 18:00 EST',
+          //       body: msg,
           //       from: '+12264000625',
           //       to: '+16474256464'
           //     })
@@ -115,15 +114,37 @@ module.exports = (db) => {
     }
 
     if (req.body.completedTime) {
-      const queryParams = [];
-      queryParams.push(orderId);
       const updateQueryString = `
-    UPDATE orders SET completed_time = NOW()
-    WHERE id = $1 RETURNING *;
-    `;
-      db.query(updateQueryString, queryParams)
-        .then(data => {
-          // const order = data.rows[0];
+      UPDATE orders SET completed_time = NOW(), status = 'Order is ready'
+      WHERE id = $1 RETURNING *;
+      `;
+      const orderDetailsQueryString = `
+      SELECT order_id, customers.first_name, customers.last_name, items.name, items.price, quantity
+      FROM order_items
+      JOIN orders ON orders.id = order_id
+      JOIN customers ON customers.id = customer_id
+      JOIN items ON items.id = item_id
+      WHERE order_id = $1;
+      `;
+      const updatePromise = db.query(updateQueryString, [orderId]);
+      const orderDetailsPromise = db.query(orderDetailsQueryString, [orderId]);
+      Promise.all([updatePromise, orderDetailsPromise])
+        .then(response => {
+          const order = response[0].rows;
+          const orderDetails = response[1].rows;
+          const completedTime = order.completed_time;
+          const firstName = orderDetails[0].first_name;
+          // res.json({ order, orderDetails});
+          const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${completedTime}`;
+          if (order) {
+            client.messages
+              .create({
+                body: msg,
+                from: '+12264000625',
+                to: '+16474256464'
+              })
+              .then(message => console.log(message.sid));
+          }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
