@@ -76,6 +76,20 @@ module.exports = (db) => {
 
   router.post("/:userId/cart", (req, res) => {
     // Need passing data
+    // Download the helper library from https://www.twilio.com/docs/node/install
+    // Find your Account SID and Auth Token at twilio.com/console
+    // and set the environment variables. See http://twil.io/secure
+    const accountSid = 'AC21417ecef39f48e33fbf3deb537ab629';
+    const authToken = '37f530bb6d8119d61f8794e789216c26';
+    const client = require('twilio')(accountSid, authToken);
+
+    client.messages
+      .create({
+        body: 'This is message from twilio',
+        from: '+12264000625',
+        to: '+16474256464'
+      })
+      .then(message => console.log(message.sid));
   });
 
   router.get("/", (req, res) => {
