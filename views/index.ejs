@@ -1,57 +1,369 @@
-Html
+<!-- let Product= require(../cart) this is getting cart.js -->
 
-<!DOCTYPE html>
-<html lang="en">
+<!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
 
-<head>
-  <title>The Pasta Place</title>
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-  <!-- Shopping cart -->
-  <script src="https://kit.fontawesome.com/a4c9bc2fa3.js" crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
-
-<body>
-  <header>
-
-  <div class="main_nav">
-   <span> Pasta Pioneers </span>
-   <button id = "btn" type="submit" value="Submit">
-    <i  class="fas fa-shopping-cart"> Cart </i>
-   </button>
-   <i id="logo" class="fas fa-utensils"></i>
-
-      <!-- for redirecting when click on cart -->
-  <script >
-    let url = "https://www.google.ca/";
-    document.getElementById("btn").onclick = function() {
-      window.location.replace(url);
-    }
-  </script>
-
-  </div>
-
-  </header>
-
-  <div class="side_nav_container">
+  <%- include('partials/_header') %>
+  <span class="side_nav_container">
 
     <ul class="nav_links">
-      <li> <a href="#"> Pasta </a> </li>
-      <li> <a href="#"> Appatizers </a> </li>
-      <li> <a href="#"> Drinks </a> </li>
+      <li> <a href="#mains"> Pasta </a> </li>
+      <li> <a href="#appatizers"> Appatizers </a> </li>
+      <li> <a href="#drinks"> Drinks </a> </li>
+      <li> <a href="#dess"> Desserts </a> </li>
     </ul>
+  </span>
 
+  <script src="cart.js" async> </script>
 
-  </div>
+    <!-- Images  -->
+    <div class="all-imgs-container">
+      <a name="mains"> </a>
+      <h2> Pasta Dishes </h2>
 
+      <div class="pasta-container">
 
+          <div class="pasta">
+            <img src="/../../images/pasta/item-001.jpeg" height=200; width="200" alt="pasta">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[7].name %></p>
+                  <p class='description'> <%= items[7].descrition %></p>
+                  <p class='price'>$ <%= items[7].price/100 %></p>
+                  <% } %>
+
+            </div>
+          </div>
+
+          <div class="pasta">
+            <img src="/../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[8].name %></p>
+                <p class='description'><%= items[8].descrition %></p>
+                <p class='price'>$ <%= items[8].price/100 %></p>
+                <% } %>
+            </div>
+         </div>
+
+          <div class="pasta">
+
+            <img src="/../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[9].name %></p>
+                <p class='description'><%= items[9].descrition %></p>
+                <p class='price'>$ <%= items[9].price/100 %></p>
+                <% } %>
+            </div>
+          </div>
+
+          <div class="pasta">
+
+            <img src="../../images/pasta/item-004.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[10].name %></p>
+              <p class='description'><%= items[10].descrition %></p>
+              <p class='price'>$ <%= items[10].price/100 %></p>
+              <% } %>
+            </div>
+
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-005.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[11].name %></p>
+              <p class='description'> <%= items[11].descrition %></p>
+              <p class='price'>$ <%= items[11].price/100 %></p>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-006.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[12].name %></p>
+              <p class='description'><%= items[12].descrition %></p>
+              <p class='price'>$ <%= items[12].price/100 %></p>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="pasta">
+            <img src="../../images/pasta/item-007.jpeg" height=200; width="200" alt="pasta">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+              <p class="name"><%= items[13].name %></p>
+              <br>
+              <p class='description'><%= items[13].descrition %></p>
+              <br>
+              <p class='price'>$ <%= items[13].price/100 %></p>
+             <% } %>
+            </div>
+          </div>
+
+      </div> <!--End of pasta container -->
+
+          <!-- Appatizers -->
+
+      <h2 class="name2">Appatizers</h2>
+      <div class="appz-container">
+        <a name="appatizers"></a>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-1.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[0].name %></p>
+                  <br>
+                  <p class='description'><%= items[0].descrition %></p>
+                  <br>
+                  <p class='price'>$ <%= items[0].price/100 %></p>
+                  <% } %>
+            </div>
+          </div>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[1].name %></p>
+                <br>
+                <p class='description'><%= items[1].descrition %></p>
+                <br>
+                <p class='price'>$ <%= items[1].price/100 %></p>
+                <% } %>
+            </div>
+          </div>
+
+          <div class="appz">
+            <img src="/../../images/appatizers/download-3.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[2].name %></p>
+                <br>
+                <p class='description'><%= items[2].descrition %></p>
+                <br>
+                <p class='price'>$ <%= items[2].price/100 %></p>
+                <% } %>
+            </div>
+          </div>
+
+      </div> <!-- End of appz container -->
+
+         <!-- Drinks -->
+         <br>
+         <br>
+
+          <h2 class=name3> Drinks </h2>
+      <div class="drinks-container">
+        <a name="drinks"></a>
+
+        <div class="drinks">
+          <img src=" /../../images/drinks/drink1.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
+          <div class ="desc"> <%  { %>
+              <p class="name"><%= items[17].name %></p>
+              <br>
+              <p class='description'><%= items[17].descrition %></p>
+              <br>
+              <p class='price'>$ <%= items[17].price/100 %></p>
+              <% } %>
+          </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink2.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
+          <div class ="desc"> <%  { %>
+            <p class="name"><%= items[18].name %></p>
+            <br>
+            <p class='description'><%= items[18].descrition %></p>
+            <br>
+            <p class='price'>$ <%= items[18].price/100 %></p>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="drinks">
+          <img src="/../../images/drinks/drink3.jpg" height=200; width="200" alt="Drinks">
+
+          <div class="cart-buttons">
+            <button class="add"><i class="fas fa-plus"></i></button>
+            <button class="delete"><i class="fas fa-minus"></i></button>
+          </div>
+
+          <div class ="desc"> <%  { %>
+            <p class="name"><%= items[19].name %></p>
+            <br>
+            <p class='description'><%= items[19].descrition %></p>
+            <br>
+            <p class='price'>$ <%= items[19].price/100 %></p>
+            <% } %>
+          </div>
+        </div>
+        <!-- works -->
+
+        <!-- <% for(let item in items) { %>
+          <p>name: <%= items[item].name %></p>
+          <p>description: <%= items[item].descrition %></p>
+          <p>price: <%= items[item].price/100 %></p>
+        <% } %> -->
+      </div> <!-- drinks container end -->
+
+      <!-- Desserts -->
+
+      <h2 class="name4">Dessert</h2>
+      <div class="dessert-container">
+        <a name="dess"></a>
+
+          <div class="dess">
+            <img src="/../../images/dessert/pic1.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                  <p class="name"><%= items[14].name %></p>
+                  <br>
+                  <p class='description'><%= items[14].descrition %></p>
+                  <br>
+                  <p class='price'>$ <%= items[14].price/100 %></p>
+                  <% } %>
+            </div>
+          </div>
+
+          <div class="dess">
+            <img src="/../../images/dessert/pic2.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <!-- ADD CLASSES TO REST TOO  -->
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[15].name %></p>
+                <br>
+                <p class='description'><%= items[15].descrition %></p>
+                <br>
+                <p class='price'> $ <%= items[15].price/100 %></p>
+                <% } %>
+            </div>
+          </div>
+
+          <div class="dess">
+            <img src="/../../images/dessert/pic3.jpg" height=200; width="200" alt="appatizers">
+
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <div class ="desc"> <%  { %>
+                <p class="name"><%= items[16].name %></p>
+                <br>
+                <p class='description'><%= items[16].descrition %></p>
+                <br>
+                <p class='price'>$ <%= items[16].price/100 %></p>
+                <% } %>
+            </div>
+          </div>
+        </div> <!--End of dessert container -->
+    </div> <!-- container for all -->
+
+    <!-- document.querySelectorAll not wokring "all" -->
+
+    <!-- <script>
+      let btnADD = document.querySelector(".add")
+      let btnDelete = document.querySelector(".delete")
+      let input = document.querySelector("input")
+      btnADD.addEventListener('click',()=> {
+        input.value = parseInt(input.value) + 1;
+      })
+      btnDelete.addEventListener('click',()=> {
+        input.value = parseInt(input.value) - 1;
+      })
+
+      let btnADD = document.querySelector(".add")
+      let btnDelete = document.querySelector(".delete")
+      let input = document.querySelector("input")
+      btnADD.addEventListener('click',()=> {
+        input.value = parseInt(input.value) + 1;
+      })
+      btnDelete.addEventListener('click',()=> {
+        input.value = parseInt(input.value) - 1;
+      })
+
+      // let cartt = document.querySelectorAll('.cart');
+
+      // for(var i=0; i<btnADD.length; i++){
+      //     cartt[i].style.color = "red";
+      // }
+
+    </script>
+    <script src="main.js"></script> -->
 </body>
 </html>
-

@@ -1,4 +1,3 @@
-Css
 
 
 *{
@@ -9,16 +8,9 @@ Css
 
 body{
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgb(219, 163, 163) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+  background-color: #a3b0db;
+  display: flex;
+  flex-direction: row;
 
 }
 
@@ -34,39 +26,76 @@ body{
 
 }
 .main_nav span{
+  display: flex;
+  justify-content: space-between;
   margin: 1.5em;
+  margin-left: 23.5em;
   font-size: xx-large;
+  font-weight: 800;
   color: aqua;
+  font-family: 'Dancing Script',sans-serif;
 }
 
 .main_nav button{
   background-color: rgb(212, 153, 42);
-  margin-right: 2em;
+  margin-left: 0;
   font-size: x-large;
-  border: none;
+  //border: none;
   outline: none;
-
 }
+
+.main_nav button:hover{
+  color:aqua;
+}
+
 .main_nav #logo{
   display: flex;
   position: fixed;
-  margin-left: 1.5em;
   padding: 0;
-  margin-top: 2.5em;
-  margin-left: 4em;
+  margin-left: 13em;
   font-size: xx-large;
+}
+.location{
+  display: flex;
+  position: fixed;
+  padding: 0;
+  margin-bottom:2em;
+  margin-left: 4em;
+  font-family: 'Dancing Script',sans-serif;
+  font-size: larger;
+
 
 }
+.number{
+  display: flex;
+  position: fixed;
+  margin-top:2em;
+  padding: 0;
+  margin-left: 4em;
+  font-family: 'Dancing Script',sans-serif;
+  font-size: larger;
 
+}
+.user-name{
+display: inline-block;
+margin-left: 6em;
+margin-top: 6em;
+white-space: nowrap;
+}
+#phone{
+  padding-right: 10px;
+
+}
 // Side nav
 .side_nav_container{
 display:inline-flex;
+position: fixed;
 justify-content: space-between;
 align-items: stretch;
 padding:2em;
 margin:2.5em;
 margin-top: 10em;
-// border: 9px solid aqua;
+// //border: 9px solid aqua;
 align-items: flex-start;
 // background-color: rgb(255, 255, 255);
 
@@ -78,9 +107,11 @@ align-items: flex-start;
   justify-content: space-between;
   margin:0;
   padding:0;
-  // border: 2px solid red;
+  // //border: 2px solid red;
+  //border-radius: 20%;
+  background-color: rgba(231, 222, 222, 0.4);
   border-radius: 20%;
-  background-color: rgba(121, 107, 107, 0.4);
+  //border:1px solid black;
 
 }
 
@@ -90,15 +121,302 @@ align-items: flex-start;
   padding: 18px 18px;
   text-decoration: none;
 
-// border:1px solid pink;
+// //border:1px solid pink;
 
 
 }
 .nav_links li a:hover{
-
-  background: rgba(131, 131, 131, 0.4);
+  background: rgb(174, 223, 223);
   width: 100%;
-  border-radius: 20%;
+  //border-radius: 20%;
+}
+
+// images container
+
+.all-imgs-container{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 6em;
+  max-width: 80%;
+  margin-left:auto;
+  overflow: auto;
+  //border: 4px solid red;
+  flex-direction: column; //important
+
+}
+
+// pasta imgs
+
+.pasta-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  // flex-direction:;
+  //border: 2px solid blue;
+  width: 100%;
+
+}
+
+h2{
+  padding-bottom: .5em;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-thickness:2px;
+}
+
+
+.pasta{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 8px;
+  float: left;
+  width: 30%;
 
 
 }
+
+.pasta:hover{
+  color: aquamarine;
+}
+
+.pasta img{
+  width: 100%;
+  max-height: 250px;
+}
+
+.pasta .desc .name{
+ text-decoration: underline;
+  margin-bottom: 1em;
+}
+.desc{
+  padding:15px;
+  text-align: center;
+}
+// Appatizers
+
+.name2{
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-thickness:2px;
+}
+
+.appz-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  // flex-direction:;
+  //border: 4px solid black;
+  width: 100%;
+}
+.appz{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 30%;
+  // height: 50%;
+  //border: 2px solid orchid;
+
+  margin: 8px;
+  float: left;
+
+}
+.appz .desc .name{
+  text-decoration: underline;
+   margin-bottom: 1em;
+ }
+.appz:hover{
+  color: aquamarine;
+}
+
+.appz img{
+  width: 100%;
+  max-height: 250px;
+}
+
+// drinks
+
+.name3{
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-thickness:2px;
+
+}
+
+.drinks-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  //border: 4px solid aqua;
+  width: 100%;
+
+}
+.drinks{
+
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 30%;
+  // height: 50%;
+
+  margin: 8px;
+  float: left;
+
+  margin: 5px;
+  //border: 2px solid black;
+  float: left;
+
+
+}
+
+.drinks .desc .name{
+  text-decoration: underline;
+   margin-bottom: 1em;
+ }
+
+.drinks:hover{
+  color: aquamarine;
+}
+
+.drinks img
+{ width: 100%;
+  max-height: 250px;
+  //border: 8px solid steelblue;
+}
+
+// Dessert
+
+.name4{
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-thickness:2px;
+
+}
+
+.dessert-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  //border: 4px solid aqua;
+  width: 100%;
+
+}
+.dess{
+
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 30%;
+  // height: 50%;
+
+  margin: 8px;
+  float: left;
+
+  margin: 5px;
+  //border: 2px solid black;
+  float: left;
+
+
+}
+
+.dess .desc .name{
+  text-decoration: underline;
+   margin-bottom: 1em;
+ }
+.dess:hover{
+  color: aquamarine;
+}
+
+.dess img
+{ width: 100%;
+  max-height: 250px;
+  //border: 8px solid steelblue;
+}
+
+// Add and delete buttons
+
+.cart-buttons{
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-right: 1em;
+  // justify-content: space-evenly;
+  flex-direction: row-reverse;
+  padding-right:1em ;
+  border: none;
+  outline: none;
+}
+
+.cart-buttons .add{
+border: none;
+background: none;
+cursor: pointer;
+margin: 0;
+padding: 0;
+outline: none;
+
+
+}
+.cart-buttons .delete{
+margin-right: 1em;
+border: none;
+background: none;
+cursor: pointer;
+padding: 0;
+outline: none;
+}
+.cart-buttons .add:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+
+}
+.cart-buttons .delete:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+
+}
+
+.qnty{
+  width: 4em;
+  font-weight: lighter;
+  margin-right: 8em;
+  text-align: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+
+}
+
+// Add to cart button
+
+.add-cart{
+  position: absolute;
+  background-color: darkgray;
+  transition: all 0.3x ease-in-out;
+  opacity:0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add-cart:hover{
+  bottom: 50px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: none;
+}
+

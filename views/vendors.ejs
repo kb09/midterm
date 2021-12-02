@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Checkout Page</title>
+  <title>Restaunrant</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -17,8 +17,6 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/cart.js"></script>
-
 </head>
 
 <body>
@@ -26,31 +24,77 @@
 <div class="container">
   <div class="py-5 text-center">
     <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-    <h2>Checkout</h2>
-    <p class="lead">Thank you for choosing Cucina Deliziosa ....... Your order is almost complete.</p>
+    <h2>Order:  <%= status[0].order_id %></h2>
+
+    <p class="text-muted">Customer: <%= status[0].first_name %> <%= status[0].last_name %></span></p>
+    <p class="text-muted">Status: <%= status[0].status %></p>
+    <p class="text-muted">Place Order Time: <%= status[0].place_order_time %></p>
+    <% if (!status[0].estimated_time) { %>
+      <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
+        <div class="form-group mb-2">
+          <label class="text-muted" for="estimatedTime">Enter Estimated Time:</label>
+          <input class="form-control" type="number" name="estimatedTime" placeholder="How long will it take?" style="width: 300px; margin: 1em">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    <% } else { %>
+    <p class="text-muted" class="text-muted">Estimated Time: <%= status[0].estimated_time %></p>
+    <% } %>
+    <% if (status[0].estimated_time && !status[0].completed_time) { %>
+      <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
+        <div class="form-group mb-2">
+          <label class="text-muted" for="completedTime">Completed time:</label>
+          <input type="hidden" name ="completedTime" value = "Now()">
+          <button type="submit" class="btn btn-primary">Order is Ready!</button>
+        </div>
+      </form>
+      <% } else { %>
+    <p class="text-muted">Completed Time: <%= status[0].completed_time %></p>
+    <% } %>
   </div>
+
+
 
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
+        <span class="text-muted">Order</span>
+
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0"></h6>
-            <small class="text-muted"></small>
+            <small class="text-muted">
+              <table>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th></th>
+                </tr>
+                <% for(let order in orders) { %>
+                <tr>
+                  <td><%= orders[order].name %></td>
+                  <td><%= Math.round(orders[order].price / 100).toFixed(2) %></td>
+                  <td><%= orders[order].quantity %></td>
+                  <td>Need calculate</td>
+
+                </tr>
+                <% } %>
+              </table>
+            </small>
           </div>
 
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (CAD)</span>
+          <span>Total (CAD) Need calculate here !<%= total[0].total_item %> </span>
         </li>
       </ul>
     </div>
     <div id='form' class="col-md-8 order-md-1">
 
-      <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate method="GET" action="/index">
+      <!-- <h4 class="mb-3">Billing address</h4>
+      <form class="needs-validation" novalidate method="POST" action="/1/cart">
         <input type='hidden' name='orderItem' value=/>
         <input type='hidden' name='foodArray' value=/>
         <input type='hidden' name='quantity' value=/>
@@ -142,34 +186,9 @@
         </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Confirm Order</button>
-      </form>
+      </form> -->
     </div>
   </div>
-
-
-  <!-- Adding Cart section on checkout -->
-
-  <section class="cart-container">
-    <h1 class="cart-header">Cart</h1>
-
-    <div class="product-info">
-
-      <span class='cart-product'> Items</span>
-      <span class='cart-price'> Price </span>
-      <span class='cart-quantity'> Quantity </span>
-    </div>
-
-    <div class="cart-items"></div>
-
-    <div class="cart-total">
-      <strong class="cart-title">Total</strong>
-      <span class="cart-items-price">$0</span>
-    </div>
-    <button class="btn btn-primary" type="button" method="POST" action="Time" >Place Order</button>
-  </section>
-
-
-
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">Copyright © 2021 - </p>
