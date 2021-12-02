@@ -1,4 +1,7 @@
 <!-- let Product= require(../cart) this is getting cart.js -->
+
+<!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
+
   <%- include('partials/_header') %>
   <span class="side_nav_container">
 
@@ -29,29 +32,18 @@
 
             <div class="cart-buttons">
               <button class="add"><i class="fas fa-plus"></i></button>
-              <!-- <input type="number" value="0" size="10"> -->
               <button class="delete"><i class="fas fa-minus"></i></button>
-
-
-              <!-- adding script tag for testing, wasn't working by linking -->
-              <script>
-                let btnADD = document.querySelector(".add")
-                let btnDelete = document.querySelector(".delete")
-                let input = document.querySelector("input")
-                btnADD.addEventListener('click',()=> {
-                  input.value = parseInt(input.value) + 1;
-                })
-                btnDelete.addEventListener('click',()=> {
-                  input.value = parseInt(input.value) - 1;
-                })
-              </script>
             </div>
+                          <!-- adding script tag for testing, wasn't working by linking -->
+
+
+
 
 
             <div class ="desc"> <%  { %>
                   <p class="name"><%= items[7].name %></p>
                   <p> <%= items[7].descrition %></p>
-                  <p>$ <%= items[7].price %></p>
+                  <p>$ <%= items[7].price/100 %></p>
                   <% } %>
 
             </div>
@@ -59,10 +51,15 @@
 
           <div class="pasta">
             <img src="/../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[8].name %></p>
                 <p><%= items[8].descrition %></p>
-                <p>$ <%= items[8].price %></p>
+                <p>$ <%= items[8].price/100 %></p>
                 <% } %>
             </div>
          </div>
@@ -70,10 +67,15 @@
           <div class="pasta">
 
             <img src="/../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
+            <div class="cart-buttons">
+              <button class="add"><i class="fas fa-plus"></i></button>
+              <button class="delete"><i class="fas fa-minus"></i></button>
+            </div>
+
             <div class ="desc"> <%  { %>
                 <p class="name"><%= items[9].name %></p>
                 <p><%= items[9].descrition %></p>
-                <p>$ <%= items[9].price %></p>
+                <p>$ <%= items[9].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -84,7 +86,7 @@
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[10].name %></p>
               <p><%= items[10].descrition %></p>
-              <p>$<%= items[10].price %></p>
+              <p>$<%= items[10].price/100 %></p>
               <% } %>
             </div>
 
@@ -95,7 +97,7 @@
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[11].name %></p>
               <p> <%= items[11].descrition %></p>
-              <p>$ <%= items[11].price %></p>
+              <p>$ <%= items[11].price/100 %></p>
               <% } %>
             </div>
           </div>
@@ -105,7 +107,7 @@
             <div class ="desc"> <%  { %>
               <p class="name"><%= items[12].name %></p>
               <p><%= items[12].descrition %></p>
-              <p>$ <%= items[12].price %></p>
+              <p>$ <%= items[12].price/100 %></p>
               <% } %>
             </div>
           </div>
@@ -117,7 +119,7 @@
               <br>
               <p><%= items[13].descrition %></p>
               <br>
-              <p>$ <%= items[13].price %></p>
+              <p>$ <%= items[13].price/100 %></p>
              <% } %>
             </div>
           </div>
@@ -137,7 +139,7 @@
                   <br>
                   <p><%= items[0].descrition %></p>
                   <br>
-                  <p>$ <%= items[0].price %></p>
+                  <p>$ <%= items[0].price/100 %></p>
                   <% } %>
             </div>
           </div>
@@ -149,7 +151,7 @@
                 <br>
                 <p><%= items[1].descrition %></p>
                 <br>
-                <p>$ <%= items[1].price %></p>
+                <p>$ <%= items[1].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -161,7 +163,7 @@
                 <br>
                 <p><%= items[2].descrition %></p>
                 <br>
-                <p>$ <%= items[2].price %></p>
+                <p>$ <%= items[2].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -183,7 +185,7 @@
               <br>
               <p><%= items[17].descrition %></p>
               <br>
-              <p>$ <%= items[17].price %></p>
+              <p>$ <%= items[17].price/100 %></p>
               <% } %>
           </div>
         </div>
@@ -195,7 +197,7 @@
             <br>
             <p><%= items[18].descrition %></p>
             <br>
-            <p>$ <%= items[18].price %></p>
+            <p>$ <%= items[18].price/100 %></p>
             <% } %>
           </div>
         </div>
@@ -207,7 +209,7 @@
             <br>
             <p><%= items[19].descrition %></p>
             <br>
-            <p>$ <%= items[19].price %></p>
+            <p>$ <%= items[19].price/100 %></p>
             <% } %>
           </div>
         </div>
@@ -216,7 +218,7 @@
         <!-- <% for(let item in items) { %>
           <p>name: <%= items[item].name %></p>
           <p>description: <%= items[item].descrition %></p>
-          <p>price: <%= items[item].price %></p>
+          <p>price: <%= items[item].price/100 %></p>
         <% } %> -->
       </div> <!-- drinks container end -->
 
@@ -233,7 +235,7 @@
                   <br>
                   <p><%= items[14].descrition %></p>
                   <br>
-                  <p>$ <%= items[14].price %></p>
+                  <p>$ <%= items[14].price/100 %></p>
                   <% } %>
             </div>
           </div>
@@ -245,7 +247,7 @@
                 <br>
                 <p><%= items[15].descrition %></p>
                 <br>
-                <p>$ <%= items[15].price %></p>
+                <p>$ <%= items[15].price/100 %></p>
                 <% } %>
             </div>
           </div>
@@ -257,12 +259,38 @@
                 <br>
                 <p><%= items[16].descrition %></p>
                 <br>
-                <p>$ <%= items[16].price %></p>
+                <p>$ <%= items[16].price/100 %></p>
                 <% } %>
             </div>
           </div>
         </div> <!--End of dessert container -->
     </div> <!-- container for all -->
+
+    <script>
+      let btnADD = document.querySelector(".add")
+      let btnDelete = document.querySelector(".delete")
+      let input = document.querySelector("input")
+      btnADD.addEventListener('click',()=> {
+        input.value = parseInt(input.value) + 1;
+      })
+      btnDelete.addEventListener('click',()=> {
+        input.value = parseInt(input.value) - 1;
+      })
+    </script>
 </body>
 </html>
 
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"
+    integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script> -->
