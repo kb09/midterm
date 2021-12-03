@@ -4,9 +4,22 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const accountSid = 'AC21417ecef39f48e33fbf3deb537ab629';
-const authToken = '37f530bb6d8119d61f8794e789216c26';
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+
+// const formatDate = (date) => {
+//   const dateStr =
+//   ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+//   ("00" + date.getDate()).slice(-2) + "/" +
+//   date.getFullYear() + " " +
+//   ("00" + date.getHours()).slice(-2) + ":" +
+//   ("00" + date.getMinutes()).slice(-2) + ":";
+//   return dateStr;
+// // console.log(dateStr);
+// };
+
+
 
 module.exports = (db) => {
 
@@ -41,7 +54,8 @@ module.exports = (db) => {
       .then(response => {
         const orders = response[0].rows;
         const total = response[1].rows;
-        const status = response[2].rows;
+        let status = response[2].rows;
+        // status.estimated_time = formatDate(status.estimated_time);
         const templateVars = { orders, total, status };
         // res.json(templateVars);
         res.render("vendors", templateVars); //ejs file need to be changed
@@ -81,17 +95,17 @@ module.exports = (db) => {
         .then(response => {
           const order = response[0].rows;
           const orderDetails = response[1].rows;
-          const estimatedTime = order.estimated_time;
+          const estimatedTime = order[0].estimated_time;
           const firstName = orderDetails[0].first_name;
-          console.log(order.estimated_time);
-          const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
+          const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} will be ready at ${estimatedTime}`;
+          // console.log(msg);
           // res.json({ order, orderDetails });
           if (order) {
             client.messages
               .create({
                 body: msg,
-                from: '+12264000625',
-                to: '+16474256464'
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
               })
               .then(message => console.log(message.sid));
           }
@@ -122,20 +136,27 @@ module.exports = (db) => {
       const orderDetailsPromise = db.query(orderDetailsQueryString, [orderId]);
       Promise.all([updatePromise, orderDetailsPromise])
         .then(response => {
+
           const order = response[0].rows;
           const orderDetails = response[1].rows;
-          const completedTime = order.completed_time;
+          const completedTime = order[0].completed_time;
           const firstName = orderDetails[0].first_name;
+          // console.log(`competed_time: `, typeof completedTime);
           // res.json({ order, orderDetails});
-          const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${completedTime}`;
+          const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} is ready, please come and pick it up!`;
+          console.log(msg);
           if (order) {
+            console.log("Send MSG");
             client.messages
               .create({
                 body: msg,
-                from: '+12264000625',
-                to: '+16474256464'
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
               })
-              .then(message => console.log(message.sid));
+              .then(message => console.log(message.sid))
+              .catch(error => {
+                console.log(error);
+              })
           }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
