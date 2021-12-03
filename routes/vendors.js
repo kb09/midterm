@@ -8,19 +8,6 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-const formatDate = (date) => {
-  const dateStr =
-  ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
-  ("00" + date.getDate()).slice(-2) + "/" +
-  date.getFullYear() + " " +
-  ("00" + date.getHours()).slice(-2) + ":" +
-  ("00" + date.getMinutes()).slice(-2) + ":";
-  return dateStr;
-// console.log(dateStr);
-};
-
-
-
 module.exports = (db) => {
 
   router.get("/:id/:orders/:order_id", (req, res) => {
@@ -55,10 +42,8 @@ module.exports = (db) => {
         const orders = response[0].rows;
         const total = response[1].rows;
         let status = response[2].rows;
-        // status.estimated_time = formatDate(status.estimated_time);
         const templateVars = { orders, total, status };
-        // res.json(templateVars);
-        res.render("vendors", templateVars); //ejs file need to be changed
+        res.render("vendors", templateVars);
       })
       .catch(err => {
         res
@@ -98,8 +83,6 @@ module.exports = (db) => {
           const estimatedTime = order[0].estimated_time;
           const firstName = orderDetails[0].first_name;
           const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} will be ready at ${estimatedTime}`;
-          console.log(msg);
-          res.json({ order, orderDetails });
           if (order) {
             client.messages
               .create({
@@ -139,14 +122,9 @@ module.exports = (db) => {
 
           const order = response[0].rows;
           const orderDetails = response[1].rows;
-          const completedTime = order[0].completed_time;
           const firstName = orderDetails[0].first_name;
-          // console.log(`competed_time: `, typeof completedTime);
-          // res.json({ order, orderDetails});
           const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} is ready, please come and pick it up!`;
-          console.log(msg);
           if (order) {
-            // console.log("Send MSG");
             client.messages
               .create({
                 body: msg,
@@ -155,7 +133,7 @@ module.exports = (db) => {
               })
               .then(message => console.log(message.sid))
               .catch(error => {
-                // console.log(error);
+                console.log(error);
               })
           }
           res.redirect(`/vendors/1/order/${orderId}`);
