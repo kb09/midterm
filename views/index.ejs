@@ -1,155 +1,93 @@
 
-  <%- include('partials/_header') %>
 
-  <span class="side_nav_container">
+<%- include('partials/_header') %>
 
-    <ul class="nav_links">
-      <li> <a href="#mains"> Pasta </a> </li>
-      <li> <a href="#appatizers"> Appatizers </a> </li>
-      <li> <a href="#drinks"> Drinks </a> </li>
-    </ul>
-  </span>
+  <div class="container">
+    <div class="row">
+      <div class="col-2 ">
+        <div class="container position-fixed col-2 bg-light shadow rounded p-3 my-3 " >
 
-    <!-- Images  -->
-    <div class="all-imgs-container">
-      <a name="mains"> </a>
-      <h2> Pasta Dishes </h2>
 
-      <div class="pasta-container">
-
-          <div class="pasta">
-             <img src="/../../images/pasta/item-001.jpeg" height=200; width="200" alt="pasta">
-             <div class ="desc"> description </div>
-
+          <% for(let i=0; i < categories.length;i++){%>
+            <div class="row text-black text-center" >
+            <a href="#<%=categories[i].name%>">
+              <%=categories[i].name%>
+            </a>
           </div>
+          <hr/>
+            <%}%>
 
-          <div class="pasta">
-            <img src="../../images/pasta/item-002.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
+            <div class="row justify-content-center">
 
-          <div class="pasta">
-            <img src="../../images/pasta/item-003.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> A random white pasta with some good stuff on it probably got some nice sauce goes well with a drink and an appatizer </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-004.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-005.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-006.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-007.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-008.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="pasta">
-            <img src="../../images/pasta/item-009.jpeg" height=200; width="200" alt="pasta">
-            <div class ="desc"> description </div>
-          </div>
-
-      </div> <!--End of pasta container -->
-
-          <!-- Appatizers -->
-
-      <h2 class="name2">Appatizers</h2>
-      <div class="appz-container">
-        <a name="appatizers"></a>
-
-          <div class="appz">
-            <img src="/../../images/appatizers/download-1.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-           <img src="/../../images/appatizers/download-2.jpg" height=200; width="200" alt="appatizers">
-           <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="/../../images/appatizers/download-3.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="/../../images/appatizers/download-4.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="../../images/appatizers/images-1.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-          <div class="appz">
-            <img src="../../images/appatizers/images.jpg" height=200; width="200" alt="appatizers">
-            <div class ="desc"> description </div>
-          </div>
-
-      </div> <!-- End of appz container -->
-
-
-         <!-- Drinks -->
-
-         <h2 class=name3> Drinks </h2>
-      <div class="drinks-container">
-        <a name="drinks"></a>
-
-        <div class="drinks">
-          <img src=" /../../images/drinks/drink1.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
-
-        <div class="drinks">
-          <img src="/../../images/drinks/drink2.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
-
-        <div class="drinks">
-          <img src="/../../images/drinks/drink3.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
-
-        <div class="drinks">
-          <img src="/../../images/drinks/drink5.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
-
-        <div class="drinks">
-          <img src="/../../images/drinks/drink6.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
-
-        <div class="drinks">
-          <img src="/../../images/drinks/drink7.jpg" height=200; width="200" alt="Drinks">
-          <div class ="desc"> description </div>
-        </div>
+            <button type="submit" class="btn btn-primary" form="form1">Go to Cart
+            </button>
+            </div>
 
         </div>
+      </div>
+      <div class="col">
+        <!-- Images  -->
+        <form action='/cart' method='POST' id="form1">
+
+          <% for(let j=0; j < categories.length; j++){%>
+
+            <div class="container">
+              <a name="<%=categories[j].name%>"> </a>
+              <h2 class="bg-light my-3 p-3 rounded shadow">
+                <%=categories[j].name%>
+              </h2>
+
+              <div class="container">
+
+                <% for(let i=0;i < items.length;i++){%>
+
+                  <%if(items[i].category_id===j+1){%>
+
+
+                    <div class="container my-3 p-3 bg-white text-dark rounded shadow">
+                      <div class="row justify-content-end">
+                        <h3 class="col">
+                          <%=items[i].name%>
+                        </h3>
+                      </div>
+                      <div class="row">
+                        <div class="desc col">
+                          <%=items[i].description%>
+                        </div>
+                        <img class="col" src="<%=items[i].thumbnail_url%>" height=200; width="200" alt="pasta">
+                      </div>
+                      <div class="row justify-content-between">
+                        <p class="col">
+                          $<%=items[i].price / 100%>
+                        </p>
+                        <div class="col">
+                          <div class="row justify-content-end">
+                          <p class="col">Quantity</p>
+                          <input class="col item-quantity-<%=items[i].id%>" data-oldvalue="0" name="<%=items[i].name%>" id="<%=items[i].name%>" type='number' min='0'
+                          placeholder="0">
+                        </div>
+                      </div>
+
+                        </div>
+
+                    </div>
+
+                    <% }}%>
+
+              </div>
+
+
+            </div>
+
+            <%}%>
+          </form>
+
+      </div>
+    </div>
+  </div>
 
 
 
+  </body>
 
-
-
-
-    </div> <!-- container for all -->
-
-
-</body>
-</html>
+  </html>
