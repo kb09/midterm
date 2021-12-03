@@ -1,4 +1,5 @@
 // Client facing scripts here
+<<<<<<< HEAD
 const addQuantityToCart = function(id) {
 // const previousInputValue = $(".item-quantity-" + id).defaultValue()
 const previousInputValue = document.getElementsByClassName(".item-quantity-" + id).value;
@@ -21,3 +22,9 @@ $(".cart-number").text(currentCartValue)
 
 
 }
+=======
+
+
+
+
+>>>>>>> 3e96d1ce31799da16e35693c6291afeff406c80b

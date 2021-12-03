@@ -75,7 +75,7 @@ module.exports = (db) => {
   });
 
   router.post("/:userId/cart", (req, res) => {
-    // Need passing data
+
   });
 
   router.get("/", (req, res) => {
