@@ -4,20 +4,20 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// const accountSid = process.env.TWILIO_ACCOUNT_SID;
-// const authToken = process.env.TWILIO_AUTH_TOKEN;
-// const client = require('twilio')(accountSid, authToken);
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 
-// const formatDate = (date) => {
-//   const dateStr =
-//   ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
-//   ("00" + date.getDate()).slice(-2) + "/" +
-//   date.getFullYear() + " " +
-//   ("00" + date.getHours()).slice(-2) + ":" +
-//   ("00" + date.getMinutes()).slice(-2) + ":";
-//   return dateStr;
-// // console.log(dateStr);
-// };
+const formatDate = (date) => {
+  const dateStr =
+  ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+  ("00" + date.getDate()).slice(-2) + "/" +
+  date.getFullYear() + " " +
+  ("00" + date.getHours()).slice(-2) + ":" +
+  ("00" + date.getMinutes()).slice(-2) + ":";
+  return dateStr;
+// console.log(dateStr);
+};
 
 
 
@@ -98,17 +98,17 @@ module.exports = (db) => {
           const estimatedTime = order[0].estimated_time;
           const firstName = orderDetails[0].first_name;
           const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} will be ready at ${estimatedTime}`;
-          // console.log(msg);
-          // res.json({ order, orderDetails });
-          // if (order) {
-          //   client.messages
-          //     .create({
-          //       body: msg,
-          //       from: process.env.SOURCE_NUMBER,
-          //       to: process.env.DESTINATION_NUMBER
-          //     })
-          //     .then(message => console.log(message.sid));
-          // }
+          console.log(msg);
+          res.json({ order, orderDetails });
+          if (order) {
+            client.messages
+              .create({
+                body: msg,
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
+              })
+              .then(message => console.log(message.sid));
+          }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
@@ -145,19 +145,19 @@ module.exports = (db) => {
           // res.json({ order, orderDetails});
           const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} is ready, please come and pick it up!`;
           console.log(msg);
-          // if (order) {
-          //   console.log("Send MSG");
-          //   client.messages
-          //     .create({
-          //       body: msg,
-          //       from: process.env.SOURCE_NUMBER,
-          //       to: process.env.DESTINATION_NUMBER
-          //     })
-          //     .then(message => console.log(message.sid))
-          //     .catch(error => {
-          //       console.log(error);
-          //     })
-          // }
+          if (order) {
+            // console.log("Send MSG");
+            client.messages
+              .create({
+                body: msg,
+                from: process.env.SOURCE_NUMBER,
+                to: process.env.DESTINATION_NUMBER
+              })
+              .then(message => console.log(message.sid))
+              .catch(error => {
+                // console.log(error);
+              })
+          }
           res.redirect(`/vendors/1/order/${orderId}`);
         })
         .catch(err => {
