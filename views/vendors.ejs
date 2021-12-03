@@ -70,14 +70,14 @@
                 <tr>
                   <th>Item</th>
                   <th>Price</th>
-                  <th>Quantity</th>
+                  <th class='q'>Quantity</th>
                   <th>$</th>
                 </tr>
                 <% for(let order in orders) { %>
                 <tr>
                   <td><%= orders[order].name %></td>
                   <td><%= Math.round(orders[order].price / 100).toFixed(2) %></td>
-                  <td ><%= orders[order].quantity %></td>
+                  <td class='p'><%= orders[order].quantity %></td>
                   <td><%= (Math.round(orders[order].price / 100).toFixed(2)) * (orders[order].quantity) %></td>
 
                 </tr>
@@ -90,11 +90,10 @@
            <span>Total (CAD) </span>
           <span>
             <% let x = 0 %>
-            <% for(let order in orders) { %>
+            <% for(let i =0;i < orders.length;i++){%>
 
-                <span> <% let totaly=((orders[order].price) * (orders[order].quantity)) / 100 %></span>
+                <span> <% let totaly=((orders[i].price/ 100).toFixed(2)) * (orders[i].quantity) %></span>
                 <span> <%= x += totaly%></span>
-
 
 
 
