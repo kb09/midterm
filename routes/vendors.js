@@ -97,7 +97,7 @@ module.exports = (db) => {
           const orderDetails = response[1].rows;
           const estimatedTime = order[0].estimated_time;
           const firstName = orderDetails[0].first_name;
-          const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up at ${estimatedTime}`;
+          const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} will be ready at ${estimatedTime}`;
           // console.log(msg);
           // res.json({ order, orderDetails });
           if (order) {
@@ -141,9 +141,9 @@ module.exports = (db) => {
           const orderDetails = response[1].rows;
           const completedTime = order[0].completed_time;
           const firstName = orderDetails[0].first_name;
-          console.log(`competed_time: `, typeof completedTime);
+          // console.log(`competed_time: `, typeof completedTime);
           // res.json({ order, orderDetails});
-          const msg = `Hello ${firstName}. your order No. ${orderId} is confirmed, please pick it up!  ${completedTime}`;
+          const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} is ready, please come and pick it up!`;
           console.log(msg);
           if (order) {
             console.log("Send MSG");
