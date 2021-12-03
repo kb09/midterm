@@ -2,7 +2,7 @@
 INSERT INTO items (name, description, price, thumbnail_url, category_id)
 VALUES ('Garlic Bread and Cheese', 'Homemade garlic bread with cheese.', 600, '', 1);
 INSERT INTO items (name, description, price, thumbnail_url, category_id)
-VALUES ('Firecracker Shrimp', 'Pan-seared black tiger shrimp, leeks tomato, brandy spicy Thai sauce.', 1300, '', 1);
+VALUES ('Firecracker Shrimp', 'Pan-seared black tiger shrimp, leeks tomato, brandy spicy Thai sauce.', 1300, '/images/item-001.jpeg', 1);
 INSERT INTO items (name, description, price, thumbnail_url, category_id)
 VALUES ('Calamari', 'Choice of grilled or fried tender squid rings served with chipotle aioli.', 1400, '/images/item-008.jpeg', 1);
 

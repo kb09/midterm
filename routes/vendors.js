@@ -125,7 +125,6 @@ module.exports = (db) => {
           const firstName = orderDetails[0].first_name;
           const msg = `Hello ${firstName}, this is Cucina Deliziosa. Your order No. ${orderId} is ready, please come and pick it up!`;
           if (order) {
-            console.log("Send MSG");
             client.messages
               .create({
                 body: msg,
