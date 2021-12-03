@@ -1,6 +1,7 @@
 // load .env data into process.env
 require("dotenv").config();
 
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -42,6 +43,7 @@ const rootRoutes = require("./routes/root");
 const cartRoutes = require("./routes/cart");
 const ordersRoutes = require("./routes/orders");
 const vendorsRoutes = require("./routes/vendors");
+const statusRoutes = require("./routes/status");
 
 
 // Mount all resource routes
@@ -53,6 +55,7 @@ app.use("/cart", cartRoutes(db));
 app.use("/orders", ordersRoutes(db));
 app.use("/vendors", vendorsRoutes(db));
 app.use("/", rootRoutes(db));
+app.use("/status", statusRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
