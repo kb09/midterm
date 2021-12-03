@@ -28,7 +28,7 @@
 
     <p class="text-muted">Customer: <%= status[0].first_name %> <%= status[0].last_name %></span></p>
     <p class="text-muted">Status: <%= status[0].status %></p>
-    <p class="text-muted">Place Order Time: <%= status[0].place_order_time %></p>
+    <p class="text-muted">Place Order Time: <%= status[0].place_order_time  %></p>
     <% if (!status[0].estimated_time) { %>
       <form class="form-inline" action="/vendors/1/orders/<%= status[0].order_id %>" method="POST">
         <div class="form-group mb-2">
@@ -71,14 +71,14 @@
                   <th>Item</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th></th>
+                  <th>$</th>
                 </tr>
                 <% for(let order in orders) { %>
                 <tr>
                   <td><%= orders[order].name %></td>
                   <td><%= Math.round(orders[order].price / 100).toFixed(2) %></td>
-                  <td><%= orders[order].quantity %></td>
-                  <td>Need calculate</td>
+                  <td ><%= orders[order].quantity %></td>
+                  <td><%= (Math.round(orders[order].price / 100).toFixed(2)) * (orders[order].quantity) %></td>
 
                 </tr>
                 <% } %>
@@ -87,7 +87,22 @@
           </div>
 
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (CAD) Need calculate here !<%= total[0].total_item %> </span>
+           <span>Total (CAD) </span>
+          <span>
+            <% let x = 0 %>
+            <% for(let order in orders) { %>
+
+                <span> <% let totaly=((orders[order].price) * (orders[order].quantity)) / 100 %></span>
+                <span> <%= x += totaly%></span>
+
+
+
+
+              <% } %>
+           <%=  %> </span>
+
+
+
         </li>
       </ul>
     </div>
